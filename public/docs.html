@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Documentación · EduNova</title>
+    <meta name="description" content="Documentación preliminar de EduNova" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #0ea5e9 100%);
+      }
+      body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <header class="max-w-5xl mx-auto px-6 py-10">
+      <a href="/" class="inline-flex items-center gap-3 group">
+        <img src="/src/assets/logo.png" alt="EduNova" class="w-10 h-10 rounded-xl shadow bg-white" />
+        <h1 class="text-2xl font-black">EduNova <span class="font-semibold text-slate-500">Docs</span></h1>
+      </a>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 pb-24">
+      <section class="mb-10">
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h2 class="text-xl font-bold mb-2">Estado</h2>
+          <p class="text-slate-600">Documentación preliminar. El producto está en desarrollo activo.</p>
+        </div>
+      </section>
+
+      <section class="grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="text-lg font-semibold mb-2">Primeros pasos</h3>
+          <ol class="list-decimal pl-5 space-y-1 text-slate-700">
+            <li>Solicita una demo desde la landing.</li>
+            <li>Importa alumnos y cursos (CSV).</li>
+            <li>Registra asistencias y calificaciones.</li>
+          </ol>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="text-lg font-semibold mb-2">Soporte</h3>
+          <p class="text-slate-700">Escríbenos a <a class="text-blue-600 underline" href="mailto:soporte@edunova.app?subject=Consulta%20EduNova">soporte@edunova.app</a></p>
+        </div>
+      </section>
+
+      <section class="mt-6 p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <h3 class="text-lg font-semibold mb-2">Preguntas frecuentes</h3>
+        <ul class="list-disc pl-5 space-y-2 text-slate-700">
+          <li>¿Migración? Sí, ayudamos con la transición desde tu sistema actual.</li>
+          <li>¿Capacitación? Onboarding simple y guía rápida.</li>
+          <li>¿Seguridad? Enfoque en privacidad y buenas prácticas.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="max-w-5xl mx-auto px-6 py-10 text-sm text-slate-500">
+      © 2024 EduNova
+    </footer>
+  </body>
+  </html>
+
+
