@@ -179,33 +179,4 @@ html {
   }
 }
 
-/* Scroll reveal base (progressive enhancement: only hide when JS enabled) */
-.js-enabled [data-animate] {
-  opacity: 0;
-  transform: translateY(16px);
-  transition-property: opacity, transform;
-  transition-duration: 600ms;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--delay, 0s);
-  will-change: opacity, transform;
-}
-
-.js-enabled [data-animate].is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* Direction variants */
-.js-enabled [data-animate="up"] { transform: translateY(16px); }
-.js-enabled [data-animate="down"] { transform: translateY(-16px); }
-.js-enabled [data-animate="left"] { transform: translateX(-16px); }
-.js-enabled [data-animate="right"] { transform: translateX(16px); }
-.js-enabled [data-animate="scale"] { transform: scale(0.96); }
-
-@media (prefers-reduced-motion: reduce) {
-  .js-enabled [data-animate] {
-    transition: none;
-    opacity: 1;
-    transform: none !important;
-  }
-}
+/* Scroll reveal removed */

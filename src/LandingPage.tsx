@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Modal } from './components/Modal';
@@ -21,7 +21,6 @@ export function LandingPage() {
   const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
-  const pageRef = useRef<HTMLDivElement | null>(null);
 
   const handleDemoClick = () => {
     setIsDemoModalOpen(true);
@@ -43,56 +42,24 @@ export function LandingPage() {
     setToastOpen(true);
   };
 
-  useEffect(() => {
-    const root = pageRef.current ?? document;
-    const elements = Array.from(root.querySelectorAll<HTMLElement>('[data-animate]'));
-    if (elements.length === 0) return;
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  
 
   return (
-    <div ref={pageRef} className="min-h-screen">
+    <div className="min-h-screen">
       {/* Navbar */}
       <Navbar onDemoClick={handleDemoClick} onCallClick={handleCallClick} />
 
       {/* Main Content */}
       <main>
-        <div data-animate="up">
-          <Hero onDemoClick={handleDemoClick} onCallClick={handleCallClick} />
-        </div>
-        <div data-animate="up" style={{ ['--delay' as any]: '0.05s' }}>
-          <SocialProof />
-        </div>
-        <section data-animate="up" style={{ ['--delay' as any]: '0.1s' }}>
-          <Features />
-        </section>
-        <section data-animate="up" style={{ ['--delay' as any]: '0.1s' }}>
-          <HowItWorks onDemoClick={handleDemoClick} />
-        </section>
-        <section data-animate="up" style={{ ['--delay' as any]: '0.1s' }}>
-          <IAHighlights />
-        </section>
-        <section data-animate="up" style={{ ['--delay' as any]: '0.1s' }}>
-          <Metrics />
-        </section>
-        <section data-animate="up" style={{ ['--delay' as any]: '0.1s' }}>
-          <Pricing onDemoClick={handleDemoClick} />
-        </section>
-        <section data-animate="up" style={{ ['--delay' as any]: '0.1s' }}>
-          <FAQ />
-        </section>
-        <section data-animate="up" style={{ ['--delay' as any]: '0.1s' }}>
-          <CTA onDemoClick={handleDemoClick} onCallClick={handleCallClick} onLeadSuccess={handleLeadSuccess} />
-        </section>
+        <Hero onDemoClick={handleDemoClick} onCallClick={handleCallClick} />
+        <SocialProof />
+        <Features />
+        <HowItWorks onDemoClick={handleDemoClick} />
+        <IAHighlights />
+        <Metrics />
+        <Pricing onDemoClick={handleDemoClick} />
+        <FAQ />
+        <CTA onDemoClick={handleDemoClick} onCallClick={handleCallClick} onLeadSuccess={handleLeadSuccess} />
         <StickyCTA onDemoClick={handleDemoClick} onCallClick={handleCallClick} />
         <DesktopCTA onDemoClick={handleDemoClick} onCallClick={handleCallClick} />
       </main>
