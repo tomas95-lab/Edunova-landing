@@ -86,8 +86,7 @@ export function Features() {
                 </span>
               </div>
               <h3 className="text-3xl md:text-4xl font-black mb-4" style={{ color: 'var(--color-text-strong)' }}>
-                Características que 
-                <span className="text-gradient">marcan la diferencia</span>
+                Características que <span className="text-gradient">marcan la diferencia</span>
               </h3>
               <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>
                 Beneficios diseñados para el éxito de tu institución

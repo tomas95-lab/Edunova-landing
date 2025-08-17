@@ -21,6 +21,17 @@ export function FAQ() {
           </p>
         </div>
 
+        {/* Muestra 3 preguntas resumidas al tope */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          {landingCopy.faq.questions.slice(0, 3).map((faq, index) => (
+            <div key={index} className="bg-white rounded-2xl border border-gray-200 p-5">
+              <h3 className="text-base font-semibold text-gray-900 mb-2">{faq.question}</h3>
+              <p className="text-sm text-gray-600">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Lista completa en acordeón */}
         <div className="space-y-4">
           {landingCopy.faq.questions.map((faq, index) => (
             <div

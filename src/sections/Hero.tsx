@@ -21,11 +21,11 @@ export function Hero({ onDemoClick, onCallClick }: HeroProps) {
 
       <div className="relative z-10 max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
         <div className="text-center">
-          {/* Announcement Badge */}
+          {/* Announcement Badge: enfatiza IA */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 mb-8 animate-fadeInUp">
             <Sparkles className="w-4 h-4 text-blue-600 mr-2" />
             <span className="text-sm font-medium text-blue-700">
-              Nuevo: IA para observaciones automáticas ✨
+              IA aplicada: observaciones y alertas automáticas ✨
             </span>
             <Star className="w-4 h-4 text-yellow-500 ml-2" />
           </div>
@@ -78,7 +78,7 @@ export function Hero({ onDemoClick, onCallClick }: HeroProps) {
             ))}
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA principal centrada; acción secundaria se muestra más abajo */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
             <button
               onClick={onDemoClick}
@@ -91,20 +91,6 @@ export function Hero({ onDemoClick, onCallClick }: HeroProps) {
                 <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-            
-            <button
-              onClick={onCallClick}
-              className="group px-10 py-5 rounded-2xl font-bold text-lg border-2 hover-lift focus-ring transition-all duration-300 glass"
-              style={{ 
-                borderColor: 'var(--color-primary)',
-                color: 'var(--color-primary)'
-              }}
-            >
-              <span className="flex items-center">
-                {landingCopy.hero.ctaSecondary}
-                <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
             </button>
           </div>
 

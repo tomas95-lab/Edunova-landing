@@ -3,8 +3,6 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Modal } from './components/Modal';
 import { LeadForm } from './components/LeadForm';
-import { StickyCTA } from './components/StickyCTA';
-import { DesktopCTA } from './components/DesktopCTA';
 import { Toast } from './components/Toast';
 import { Hero } from './sections/Hero';
 import { SocialProof } from './sections/SocialProof';
@@ -47,7 +45,7 @@ export function LandingPage() {
   return (
     <div className="min-h-screen">
       {/* Navbar */}
-      <Navbar onDemoClick={handleDemoClick} onCallClick={handleCallClick} />
+      <Navbar onDemoClick={handleDemoClick} />
 
       {/* Main Content */}
       <main>
@@ -59,9 +57,8 @@ export function LandingPage() {
         <Metrics />
         <Pricing onDemoClick={handleDemoClick} />
         <FAQ />
-        <CTA onDemoClick={handleDemoClick} onCallClick={handleCallClick} onLeadSuccess={handleLeadSuccess} />
-        <StickyCTA onDemoClick={handleDemoClick} onCallClick={handleCallClick} />
-        <DesktopCTA onDemoClick={handleDemoClick} onCallClick={handleCallClick} />
+        <CTA onDemoClick={handleDemoClick} onLeadSuccess={handleLeadSuccess} />
+      
       </main>
 
       {/* Footer */}

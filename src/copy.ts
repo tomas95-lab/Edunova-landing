@@ -2,13 +2,13 @@ export const landingCopy = {
   // Hero Section
   hero: {
     title: "La forma moderna de gestionar tu colegio",
-    subtitle: "Menos planillas, más aprendizaje. Registra asistencias, calificaciones, boletines y alertas inteligentes en minutos.",
+    subtitle: "Menos planillas, más aprendizaje. Con IA aplicada: registra asistencias, calificaciones y genera observaciones inteligentes en minutos.",
     bullets: [
       "**Ahorra tiempo**: hasta 70% menos trabajo administrativo*",
       "**Todo en uno**: académica, comunicación y reportes",
       "**Con \"IA\" útil**: observaciones y alertas automáticas"
     ],
-    ctaPrimary: "Probar demo",
+    ctaPrimary: "Solicitar demo",
     ctaSecondary: "Agendar llamada",
     note: "*Resultados estimados en base a pruebas internas."
   },
@@ -22,15 +22,15 @@ export const landingCopy = {
   features: [
     {
       title: "Asistencias sin fricción",
-      description: "Calendario visual y carga rápida por curso."
+      description: "Pase de lista de un curso completo en 60s con calendario visual."
     },
     {
       title: "Calificaciones en vivo",
-      description: "Edición inline y promedios automáticos."
+      description: "Edición inline, promedios automáticos e importación masiva desde Excel/CSV."
     },
     {
       title: "Boletines en 1 clic",
-      description: "PDF bonito con observaciones generadas."
+      description: "PDF con observaciones generadas por IA."
     },
     {
       title: "Alertas inteligentes",
@@ -38,7 +38,7 @@ export const landingCopy = {
     },
     {
       title: "Reportes claros",
-      description: "KPIs listos para reuniones y decisiones."
+      description: "KPIs listos para reuniones, exportables a Excel."
     },
     {
       title: "Multirol",
@@ -90,12 +90,18 @@ export const landingCopy = {
         name: "Básico",
         description: "Ideal para equipos pequeños",
         features: ["Usuarios", "Asistencias", "Calificaciones", "Boletines PDF"],
+        from: "Desde USD 0,50 por alumno/mes",
+        users: "Hasta 50 usuarios incluidos",
+        setup: "Setup sin costo",
         cta: "Solicitar demo"
       },
       {
         name: "Estándar",
         description: "El más elegido",
         features: ["+ Alertas inteligentes", "+ Reportes", "+ Soporte prioritario"],
+        from: "Desde USD 0,80 por alumno/mes",
+        users: "Hasta 250 usuarios incluidos",
+        setup: "Setup sin costo",
         cta: "Solicitar demo",
         popular: true
       },
@@ -103,16 +109,19 @@ export const landingCopy = {
         name: "Premium",
         description: "Escuelas exigentes",
         features: ["+ Integraciones", "+ API", "+ Auditoría avanzada"],
+        from: "A medida",
+        users: "Usuarios ilimitados",
+        setup: "Onboarding dedicado",
         cta: "Solicitar demo"
       }
     ],
-    note: "Precios a medida según matrícula."
+    note: "Transparencia: precios según matrícula (con rangos desde), primeros 3 meses gratis en lanzamiento y setup sin costo."
   },
 
   // Final CTA
   finalCta: {
     title: "¿Listos para simplificar la gestión?",
-    ctaPrimary: "Probar demo",
+    ctaPrimary: "Solicitar demo",
     ctaSecondary: "Agendar llamada"
   },
 
@@ -153,7 +162,7 @@ export const landingCopy = {
     pricing: "Precios",
     resources: "Recursos",
     login: "Ingresar",
-    demo: "Probar demo"
+    demo: "Solicitar demo"
   },
 
   // Footer
@@ -163,7 +172,8 @@ export const landingCopy = {
       product: ["Características", "Precios", "Demo"],
       company: ["Nosotros", "Contacto", "Blog"],
       legal: ["Privacidad", "Términos", "Cookies"]
-    }
+    },
+    contactEmail: "truiz050904@gmail.com"
   },
 
   // Lead Form

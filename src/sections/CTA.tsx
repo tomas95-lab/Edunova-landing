@@ -4,11 +4,10 @@ import { LeadForm } from '../components/LeadForm';
 
 interface CTAProps {
   onDemoClick: () => void;
-  onCallClick: () => void;
   onLeadSuccess?: () => void;
 }
 
-export function CTA({ onDemoClick, onCallClick, onLeadSuccess }: CTAProps) {
+export function CTA({ onDemoClick, onLeadSuccess }: CTAProps) {
   return (
     <section className="py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,13 +30,6 @@ export function CTA({ onDemoClick, onCallClick, onLeadSuccess }: CTAProps) {
               >
                 {landingCopy.finalCta.ctaPrimary}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              
-              <button
-                onClick={onCallClick}
-                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-blue-600 transform hover:scale-105 transition-all duration-200 flex items-center justify-center"
-              >
-                {landingCopy.finalCta.ctaSecondary}
               </button>
             </div>
 

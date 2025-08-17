@@ -66,8 +66,12 @@ export function Footer() {
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               <span>En desarrollo activo</span>
             </div>
-            <div className="text-xs sm:text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-              © 2024 EduNova. Todos los derechos reservados.
+            <div className="flex items-center gap-4 text-xs sm:text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+              <a href="#" className="hover:text-blue-600">Privacidad</a>
+              <a href="#" className="hover:text-blue-600">Términos</a>
+              <a href="#" className="hover:text-blue-600">Cookies</a>
+              <a href={`mailto:${landingCopy.footer.contactEmail}`} className="hover:text-blue-600">Contacto</a>
+              <span>© 2024 EduNova</span>
             </div>
           </div>
         </div>

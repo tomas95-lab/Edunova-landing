@@ -69,12 +69,22 @@ export function Pricing({ onDemoClick }: PricingProps) {
                 <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text-strong)' }}>
                   {plan.name}
                 </h3>
-                <p className="mb-6" style={{ color: 'var(--color-text-secondary)' }}>
+                <p className="mb-2" style={{ color: 'var(--color-text-secondary)' }}>
                   {plan.description}
                 </p>
+                {/* Transparencia de precios y límites */}
+                {(plan as any).from && (
+                  <p className="text-sm font-semibold" style={{ color: 'var(--color-text-strong)' }}>
+                    {(plan as any).from}
+                  </p>
+                )}
+                <div className="text-xs mt-1 space-y-0.5" style={{ color: 'var(--color-text-secondary)' }}>
+                  {(plan as any).users && <div>{(plan as any).users}</div>}
+                  {(plan as any).setup && <div>{(plan as any).setup}</div>}
+                </div>
                 
                 {/* Early bird pricing */}
-                <div className="relative">
+                <div className="relative mt-4">
                   <div className="text-4xl font-black" style={{ color: 'var(--color-text-strong)' }}>
                     <span className="text-base font-normal" style={{ color: 'var(--color-text-secondary)' }}>
                       Early Bird
