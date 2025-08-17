@@ -1,5 +1,5 @@
 import { landingCopy } from '../copy';
-import { Rocket, Shield, Smartphone, Code2, HeartHandshake, Clock } from 'lucide-react';
+import { Rocket, Shield, Code2, HeartHandshake, Clock } from 'lucide-react';
 
 export function SocialProof() {
   const highlights = [
