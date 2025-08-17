@@ -1,5 +1,6 @@
 // Removed social icon imports because we don't link externally yet
 import { landingCopy } from '../copy';
+import logo from '../assets/logo.png';
 
 export function Footer() {
   return (
@@ -11,7 +12,7 @@ export function Footer() {
             <div className="flex items-center mb-4">
               <div className="relative mr-4">
                 <img 
-                  src="/src/assets/logo.png" 
+                  src={logo} 
                   alt="EduNova logo"
                   className="w-12 h-12 rounded-2xl object-contain shadow-lg bg-white"
                 />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Sparkles, Phone } from 'lucide-react';
 import { landingCopy } from '../copy';
+import logo from '../assets/logo.png';
 
 interface NavbarProps {
   onDemoClick: () => void;
@@ -46,7 +47,7 @@ export function Navbar({ onDemoClick, onCallClick }: NavbarProps) {
             <a href="/" className="flex items-center group">
               <div className="relative mr-4">
                 <img 
-                  src="/src/assets/logo.png" 
+                  src={logo}
                   alt="EduNova logo" 
                   className="w-12 h-12 rounded-2xl object-contain group-hover:scale-110 transition-transform duration-300 shadow-lg bg-white"
                 />
