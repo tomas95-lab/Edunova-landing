@@ -1,6 +1,5 @@
 import { ArrowRight } from 'lucide-react';
 import { landingCopy } from '../copy';
-import { LeadForm } from '../components/LeadForm';
 
 interface CTAProps {
   onDemoClick: () => void;
@@ -45,11 +44,6 @@ export function CTA({ onDemoClick, onLeadSuccess }: CTAProps) {
               </div>
               
             </div>
-          </div>
-
-          {/* Right side - Lead Form */}
-          <div className="bg-white rounded-2xl shadow-xl">
-            <LeadForm variant="inline" onSuccess={onLeadSuccess} />
           </div>
         </div>
       </div>

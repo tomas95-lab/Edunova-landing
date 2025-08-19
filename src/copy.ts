@@ -99,8 +99,8 @@ export const landingCopy = {
         name: "Estándar",
         description: "El más elegido",
         features: ["+ Alertas inteligentes", "+ Reportes", "+ Soporte prioritario"],
-        from: "Desde USD 0,80 por alumno/mes",
-        users: "Hasta 250 usuarios incluidos",
+        from: "Desde USD 1,5 por usuario/mes",
+        users: "Hasta 400 usuarios incluidos",
         setup: "Setup sin costo",
         cta: "Solicitar demo",
         popular: true
