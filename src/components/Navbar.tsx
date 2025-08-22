@@ -4,7 +4,7 @@ import { landingCopy } from '../copy';
 import logo from '../assets/logo.png';
 
 interface NavbarProps {
-  onDemoClick: () => void;
+  onDemoClick?: () => void;
 }
 
 export function Navbar({ onDemoClick }: NavbarProps) {
@@ -80,19 +80,21 @@ export function Navbar({ onDemoClick }: NavbarProps) {
           </div>
 
           {/* Desktop CTA: solo primaria para evitar saturación */}
-          <div className="hidden md:flex items-center space-x-3">
-            <button
-              onClick={onDemoClick}
-              style={{ background: 'var(--gradient-primary)' }}
-              className="px-6 py-2.5 rounded-2xl text-sm font-semibold text-white hover-lift focus-ring shadow-lg relative overflow-hidden group"
-            >
-              <span className="relative z-10 flex items-center">
-                <Sparkles className="w-4 h-4 mr-2" />
-                {landingCopy.nav.demo}
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-          </div>
+          {onDemoClick && (
+            <div className="hidden md:flex items-center space-x-3">
+              <button
+                onClick={onDemoClick}
+                style={{ background: 'var(--gradient-primary)' }}
+                className="px-6 py-2.5 rounded-2xl text-sm font-semibold text-white hover-lift focus-ring shadow-lg relative overflow-hidden group"
+              >
+                <span className="relative z-10 flex items-center">
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  {landingCopy.nav.demo}
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
+            </div>
+          )}
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -125,19 +127,21 @@ export function Navbar({ onDemoClick }: NavbarProps) {
                 {link.name}
               </a>
             ))}
-            <div className="pt-4 border-t border-white/20 space-y-3">
-              <button
-                onClick={() => {
-                  onDemoClick();
-                  setIsMobileMenuOpen(false);
-                }}
-                style={{ background: 'var(--gradient-primary)' }}
-                className="w-full px-4 py-3 rounded-xl text-base font-semibold text-white shadow-lg hover-lift flex items-center justify-center"
-              >
-                <Sparkles className="w-4 h-4 mr-2" />
-                {landingCopy.nav.demo}
-              </button>
-            </div>
+            {onDemoClick && (
+              <div className="pt-4 border-t border-white/20 space-y-3">
+                <button
+                  onClick={() => {
+                    onDemoClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  style={{ background: 'var(--gradient-primary)' }}
+                  className="w-full px-4 py-3 rounded-xl text-base font-semibold text-white shadow-lg hover-lift flex items-center justify-center"
+                >
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  {landingCopy.nav.demo}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

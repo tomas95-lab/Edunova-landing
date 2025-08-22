@@ -4,6 +4,7 @@
 :root {
   /* Paleta profesional (azules y grises sobrios) */
   --color-primary: #2563eb; /* blue-600 */
+  --color-title: #1e40af; /* blue-700 - para títulos principales */
   --color-background: #f8fafc; /* slate-50 */
   --color-text-strong: #0f172a; /* slate-900 */
   --color-text-secondary: #475569; /* slate-600 */

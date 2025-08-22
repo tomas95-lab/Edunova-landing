@@ -3,10 +3,10 @@ import { landingCopy } from '../copy';
 
 interface HeroProps {
   onDemoClick: () => void;
-  onCallClick: () => void;
+  onCallClick?: () => void;
 }
 
-export function Hero({ onDemoClick, onCallClick }: HeroProps) {
+export function Hero({ onDemoClick }: HeroProps) {
   return (
     <section 
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-pattern"
