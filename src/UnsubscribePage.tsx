@@ -3,6 +3,37 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
+const WEBHOOK_URL = import.meta.env.VITE_UNSUBSCRIBE_WEBHOOK_URL || '';
+
+async function fetchUnsubscribeStatus(email: string): Promise<boolean> {
+  if (!WEBHOOK_URL) return false;
+  try {
+    const url = `${WEBHOOK_URL}?action=status&email=${encodeURIComponent(email)}`;
+    const res = await fetch(url, { method: 'GET' });
+    if (!res.ok) return false;
+    const data = await res.json();
+    return Boolean(data?.unsubscribed || data?.ok);
+  } catch {
+    return false;
+  }
+}
+
+async function postUnsubscribe(email: string): Promise<boolean> {
+  if (!WEBHOOK_URL) return true; // fallback: assume ok if not configured
+  try {
+    const res = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'unsubscribe', email })
+    });
+    if (!res.ok) return false;
+    const data = await res.json().catch(() => ({} as any));
+    return Boolean(data?.ok !== false);
+  } catch {
+    return false;
+  }
+}
+
 export function UnsubscribePage() {
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState('');
@@ -13,7 +44,9 @@ export function UnsubscribePage() {
   useEffect(() => {
     const emailParam = searchParams.get('email');
     if (emailParam) {
-      setEmail(decodeURIComponent(emailParam));
+      const decoded = decodeURIComponent(emailParam);
+      setEmail(decoded);
+      fetchUnsubscribeStatus(decoded).then(setIsUnsubscribed).catch(() => void 0);
     }
   }, [searchParams]);
 
@@ -27,17 +60,15 @@ export function UnsubscribePage() {
     setError('');
 
     try {
-      // Aquí se podría hacer una llamada a la API para procesar el unsubscribe
-      // Por ahora simulamos el proceso
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      const ok = await postUnsubscribe(email);
+      if (!ok) throw new Error('request_failed');
+
       setIsUnsubscribed(true);
-      
-      // Opcional: enviar a Google Analytics o similar
+
       if (window.gtag) {
         window.gtag('event', 'unsubscribe', {
-          'event_category': 'email',
-          'event_label': email
+          event_category: 'email',
+          event_label: email
         });
       }
     } catch (err) {
@@ -52,16 +83,13 @@ export function UnsubscribePage() {
     setError('');
 
     try {
-      // Aquí se podría hacer una llamada a la API para resubscribir
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      // Resubscribe puede ser manejado por el webhook si se desea implementar
       setIsUnsubscribed(false);
-      
-      // Opcional: enviar a Google Analytics o similar
+
       if (window.gtag) {
         window.gtag('event', 'resubscribe', {
-          'event_category': 'email',
-          'event_label': email
+          event_category: 'email',
+          event_label: email
         });
       }
     } catch (err) {
@@ -73,14 +101,10 @@ export function UnsubscribePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Navbar */}
       <Navbar />
-
-      {/* Main Content */}
       <main className="flex-1">
         <div className="max-w-md mx-auto pt-20 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-lg p-8">
-            {/* Header */}
             <div className="text-center mb-8">
               <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
                 <svg 
@@ -97,7 +121,6 @@ export function UnsubscribePage() {
                   />
                 </svg>
               </div>
-              
               {!isUnsubscribed ? (
                 <>
                   <h1 className="text-2xl font-bold text-gray-900 mb-2">
@@ -119,7 +142,6 @@ export function UnsubscribePage() {
               )}
             </div>
 
-            {/* Email Display */}
             {email && (
               <div className="mb-6 p-4 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-600 mb-1">Email:</p>
@@ -127,14 +149,12 @@ export function UnsubscribePage() {
               </div>
             )}
 
-            {/* Error Message */}
             {error && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-sm text-red-600">{error}</p>
               </div>
             )}
 
-            {/* Action Buttons */}
             <div className="space-y-4">
               {!isUnsubscribed ? (
                 <>
@@ -193,7 +213,6 @@ export function UnsubscribePage() {
               )}
             </div>
 
-            {/* Additional Info */}
             <div className="mt-8 pt-6 border-t border-gray-200">
               <div className="text-center">
                 <p className="text-sm text-gray-500 mb-4">
@@ -219,7 +238,6 @@ export function UnsubscribePage() {
         </div>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

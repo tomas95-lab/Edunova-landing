@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, Clock } from 'lucide-react';
 import { landingCopy } from '../copy';
+import { trackCTA } from '../lib/utils';
 import logo from '../assets/logo.png';
 
 interface NavbarProps {
@@ -24,6 +25,11 @@ export function Navbar({ onDemoClick }: NavbarProps) {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleDemoClick = () => {
+    trackCTA('navbar');
+    onDemoClick?.();
+  };
 
   const navLinks = [
     { name: landingCopy.nav.product, href: '#features' },
@@ -79,17 +85,17 @@ export function Navbar({ onDemoClick }: NavbarProps) {
             </div>
           </div>
 
-          {/* Desktop CTA: solo primaria para evitar saturación */}
+          {/* Desktop CTA - único y prominente */}
           {onDemoClick && (
             <div className="hidden md:flex items-center space-x-3">
               <button
-                onClick={onDemoClick}
+                onClick={handleDemoClick}
                 style={{ background: 'var(--gradient-primary)' }}
                 className="px-6 py-2.5 rounded-2xl text-sm font-semibold text-white hover-lift focus-ring shadow-lg relative overflow-hidden group"
               >
                 <span className="relative z-10 flex items-center">
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  {landingCopy.nav.demo}
+                  <Clock className="w-4 h-4 mr-2" />
+                  Agendar demo
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
@@ -131,14 +137,14 @@ export function Navbar({ onDemoClick }: NavbarProps) {
               <div className="pt-4 border-t border-white/20 space-y-3">
                 <button
                   onClick={() => {
-                    onDemoClick();
+                    handleDemoClick();
                     setIsMobileMenuOpen(false);
                   }}
                   style={{ background: 'var(--gradient-primary)' }}
                   className="w-full px-4 py-3 rounded-xl text-base font-semibold text-white shadow-lg hover-lift flex items-center justify-center"
                 >
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  {landingCopy.nav.demo}
+                  <Clock className="w-4 h-4 mr-2" />
+                  Agendar demo
                 </button>
               </div>
             )}

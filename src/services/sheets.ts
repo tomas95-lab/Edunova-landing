@@ -3,8 +3,11 @@ export interface LeadFormPayload {
   email: string;
   colegio: string;
   rol: string;
-  tamaño: string;
-  mensaje?: string;
+  telefono?: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
 }
 
 export async function sendLeadToGoogleSheet(payload: LeadFormPayload): Promise<boolean> {
@@ -85,9 +88,15 @@ function submitViaHiddenForm(endpoint: string, payload: LeadFormPayload): Promis
     const aliases: Record<string, string[]> = {
       nombre: ['name'],
       mensaje: ['message'],
-      tamaño: ['tamano', 'size'],
       colegio: ['school'],
-      rol: ['role']
+      rol: ['role'],
+      telefono: ['phone'],
+      tamaño: ['tamano', 'size'],
+      utm_source: ['utm_source'],
+      utm_medium: ['utm_medium'],
+      utm_campaign: ['utm_campaign'],
+      utm_content: ['utm_content'],
+      createdAt: ['createdAt']
     };
     Object.entries(payload).forEach(([key, value]) => {
       const aliasList = aliases[key as keyof typeof aliases] || [];

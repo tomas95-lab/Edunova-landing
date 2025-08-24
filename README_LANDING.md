@@ -1,250 +1,141 @@
-# EduNova Landing Page
+# EduNova Landing - Mejoras de Alto Impacto Implementadas
 
-Landing page moderna y responsive para EduNova, construida con React, TypeScript y Tailwind CSS.
+## ✅ Mejoras Implementadas (Impacto > Esfuerzo)
 
-## 🚀 Características
+### 1. **Hero Optimizado**
+- **Título**: "Menos planillas. Más tiempo de clase." (2 líneas claras)
+- **Subtítulo**: "Automatizá asistencia, reportes y comunicación en 15 minutos."
+- **CTA único**: "Agendar demo de 15 min" con tracking
+- **Quick wins**: "En 2 semanas lográs" con 3 beneficios claros
+- **Trust indicators**: Sin planillas, funciona desde día 1, soporte AR
 
-- **Diseño moderno y profesional** con paleta de colores azul
-- **Totalmente responsive** (mobile, tablet, desktop)
-- **SEO optimizado** con meta tags y structured data
-- **Accesibilidad** con ARIA labels y focus management
-- **Performance optimizado** con lazy loading y animaciones suaves
-- **Captura de leads** integrada con Firestore
-- **Micro-animaciones** y efectos hover
-- **Modales interactivos** para CTAs
+### 2. **Formulario Simplificado**
+- **4 campos esenciales**: Nombre, Email, Colegio, Rol
+- **Campo opcional**: Teléfono
+- **Campos UTM ocultos**: utm_source, utm_medium, utm_campaign, utm_content
+- **Tracking**: Eventos para medir conversión
 
-## 📁 Estructura del Proyecto
+### 3. **SEO y Meta Tags Optimizados**
+- **Title**: "EduNova — Sistema de Gestión Escolar | Menos Planillas, Más Tiempo de Clase"
+- **Description**: 155 caracteres con palabras clave locales y call-to-action
+- **Keywords**: Incluye "sistema de gestión escolar, gestión educativa, software educativo"
+- **OpenGraph**: Títulos, descripciones e imágenes optimizadas para redes sociales
+- **Twitter Cards**: Configuración completa para compartir en Twitter
+- **Structured Data**: Organization, SoftwareApplication, WebSite y BreadcrumbList
+- **Sitemap**: XML sitemap con prioridades y frecuencias de actualización
+- **Robots.txt**: Control de crawlers y optimización de indexación
+- **Accesibilidad**: ARIA labels, roles semánticos y navegación por teclado
+- **Core Web Vitals**: Optimizaciones para performance y UX
 
-```
-landing/
-├── src/
-│   ├── components/          # Componentes reutilizables
-│   │   ├── Navbar.tsx       # Navegación principal
-│   │   ├── Footer.tsx       # Pie de página
-│   │   ├── LeadForm.tsx     # Formulario de captura de leads
-│   │   └── Modal.tsx        # Modal reutilizable
-│   ├── sections/            # Secciones de la landing
-│   │   ├── Hero.tsx         # Sección principal
-│   │   ├── Features.tsx     # Características del producto
-│   │   ├── HowItWorks.tsx   # Proceso de implementación
-│   │   ├── Pricing.tsx      # Planes y precios
-│   │   ├── FAQ.tsx          # Preguntas frecuentes
-│   │   ├── CTA.tsx          # Call to action final
-│   │   └── ...              # Otras secciones
-│   ├── services/            # Servicios externos
-│   │   └── firestore.ts     # Integración con Firestore
-│   ├── copy.ts              # Contenido y textos
-│   ├── LandingPage.tsx      # Componente principal
-│   └── App.tsx              # Punto de entrada
-├── index.html               # HTML principal con SEO
-└── README_LANDING.md        # Este archivo
-```
+### 4. **Prueba Social Local**
+- **Testimonio**: "Colegio de GBA Oeste redujo 4 horas semanales"
+- **Programa piloto**: "Buscamos 3 pilotos en CABA y GBA - Cupo limitado"
+- **Oferta piloto**: "1 curso, primer mes gratis"
+- **Trust indicators**: Ley 25.326, backups, servidores AR, soporte WhatsApp
 
-## 🎨 Paleta de Colores
+### 5. **CTA Fijo en Navbar**
+- **Botón prominente**: "Agendar demo" siempre visible
+- **Tracking**: Eventos separados por placement (hero, navbar, footer)
+- **Consistencia**: Mismo copy en todos los CTAs
 
-- **Primario**: `#1e40af` (Azul)
-- **Secundario**: `#4F8CFF` (Azul claro)
-- **Acentos**: Verde emerald y púrpura suave
-- **Fondos**: Grises claros y blancos
-- **Texto**: Grises oscuros para contraste
+### 6. **Footer Legal Visible**
+- **Links legales**: Privacidad, Términos, Cookies en sección dedicada
+- **Información de contacto**: Email, WhatsApp, horario AR
+- **Estructura clara**: Navegación y Legal separados
 
-## 🛠️ Tecnologías Utilizadas
+### 7. **Sistema de Tracking**
+- **Función track()**: Compatible con GA, Mixpanel, etc.
+- **Eventos específicos**: cta_demo_click, whatsapp_click
+- **UTM tracking**: Automático en todos los eventos
+- **Placement tracking**: hero, navbar, footer, modal, social_proof
 
-- **React 19** con TypeScript
-- **Tailwind CSS 4** para estilos
-- **Lucide React** para iconografía
-- **Vite** como bundler
-- **Firestore** para captura de leads
+## 📊 Métricas a Medir
 
-## 🚀 Instalación y Desarrollo
+### Conversión
+- `cta_demo_click` por placement
+- Form completions vs abandonos
 
-```bash
-# Instalar dependencias
-npm install
+### SEO
+- Posicionamiento para "sistema de gestión escolar CABA"
+- CTR en resultados de búsqueda
+- Tiempo en página y bounce rate
 
-# Ejecutar en modo desarrollo
-npm run dev
+### Engagement
+- Scroll depth en secciones clave
+- Interacción con programa piloto
+- Clicks en testimonios y trust indicators
 
-# Construir para producción
-npm run build
+## 🚀 Próximas Acciones (Prioridad Alta)
 
-# Preview de producción
-npm run preview
-```
+### 1. **Screenshot del Dashboard**
+- Agregar imagen real del dashboard arriba del pliegue
+- Alt text: "gestión escolar Argentina"
+- Mock limpio como fallback
 
-## 📱 Responsive Design
+### 2. **Páginas Legales**
+- Crear `/privacidad`, `/terminos`, `/cookies`
+- Contenido básico pero completo
+- Links desde footer
 
-La landing page está optimizada para:
-- **Mobile**: 320px - 768px
-- **Tablet**: 768px - 1024px
-- **Desktop**: 1024px+
+### 3. **Google Analytics**
+- Instalar GA4 con eventos personalizados
+- Configurar goals de conversión
+- Dashboard para métricas clave
 
-## 🎯 Funcionalidades Principales
+### 4. **A/B Testing**
+- Variante del hero: "Tu colegio ordenado en 15 minutos"
+- Test de colores de CTA
+- Diferentes testimonios
 
-### 1. Navegación
-- Navbar sticky con blur en scroll
-- Menú móvil accesible
-- Enlaces a secciones internas
-- CTAs destacados
-
-### 2. Captura de Leads
-- Formulario completo con validación
-- Integración con Firestore
-- Estados de loading y éxito
-- Campos requeridos y opcionales
-
-### 3. Secciones Interactivas
-- Hero con gradiente animado
-- Features con hover effects
-- FAQ con acordeón expandible
-- Pricing con planes destacados
-
-### 4. CTAs y Modales
-- Botones "Probar demo" y "Agendar llamada"
-- Modales con formularios integrados
-- Manejo de estados y navegación
-
-## 🔧 Configuración
-
-### Integración con Firestore
-
-Para conectar con el proyecto principal:
-
-1. Copiar la configuración de Firebase del proyecto MVP
-2. Actualizar `src/services/firestore.ts`
-3. Descomentar las líneas de Firestore
-4. Configurar las reglas de seguridad
-
-### SEO y Meta Tags
-
-El `index.html` incluye:
-- Meta tags completos
-- Open Graph para redes sociales
-- Twitter Cards
-- Structured Data (JSON-LD)
-- Canonical URL
-
-### Analytics
-
-Para agregar Google Analytics:
-
-1. Agregar variable de entorno `VITE_GA_ID`
-2. Implementar hook de analytics
-3. Trackear eventos de conversión
-
-## 📊 Métricas y Performance
-
-### Lighthouse Score Objetivo
-- **Performance**: 90+
-- **Accessibility**: 95+
-- **Best Practices**: 95+
-- **SEO**: 100
-
-### Optimizaciones Implementadas
+### 5. **Optimización Técnica**
 - Lazy loading de imágenes
-- CSS crítico inline
-- Preconnect a dominios externos
 - Compresión de assets
-- Cache headers optimizados
+- Core Web Vitals optimization
 
-## 🎨 Personalización
+## 📈 Resultados Esperados
 
-### Modificar Colores
-Editar variables CSS en `src/App.css`:
-```css
-:root {
-  --primary: oklch(0.205 0 0);
-  --secondary: oklch(0.97 0 0);
-  /* ... */
-}
+### Corto Plazo (2-4 semanas)
+- +30% conversión en formularios
+- +50% engagement en hero
+- Mejor posicionamiento SEO local
+
+### Mediano Plazo (1-3 meses)
+- 3 casos de éxito de pilotos
+- 100+ leads cualificados
+- Posición top 3 para keywords locales
+
+### Largo Plazo (3-6 meses)
+- 10+ colegios implementados
+- Referencias orgánicas
+- Expansión a otras regiones
+
+## 🔧 Configuración Técnica
+
+### Variables de Entorno
+```env
+VITE_GSHEET_WEBAPP_URL=https://script.google.com/...
+VITE_GA_TRACKING_ID=G-XXXXXXXXXX
 ```
 
-### Cambiar Contenido
-Editar `src/copy.ts` para modificar textos:
-```typescript
-export const landingCopy = {
-  hero: {
-    title: "Tu nuevo título",
-    subtitle: "Tu nuevo subtítulo",
-    // ...
-  }
-};
+### Google Sheets Mapping
+```csv
+email_status, fecha_envio, opened_email, clicked_link, respuesta_fecha
 ```
 
-### Agregar Secciones
-1. Crear componente en `src/sections/`
-2. Importar en `LandingPage.tsx`
-3. Agregar a la estructura del main
+### Eventos de Tracking
+```javascript
+// CTA clicks
+track('cta_demo_click', { placement: 'hero' })
 
-## 🚀 Deployment
-
-### Vercel (Recomendado)
-```bash
-# Instalar Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
+// Form submissions
+track('form_submit', { source: 'landing' })
 ```
 
-### Netlify
-```bash
-# Construir proyecto
-npm run build
+## 📞 Contacto y Soporte
 
-# Deploy carpeta dist/
-```
-
-### Firebase Hosting
-```bash
-# Instalar Firebase CLI
-npm i -g firebase-tools
-
-# Inicializar y deploy
-firebase init hosting
-firebase deploy
-```
-
-## 🔍 Testing
-
-```bash
-# Ejecutar tests
-npm test
-
-# Coverage
-npm run test:coverage
-```
-
-## 📝 Checklist de QA
-
-- [ ] Landing accesible en `/`
-- [ ] Responsive en todos los dispositivos
-- [ ] CTAs funcionan correctamente
-- [ ] Formulario guarda en Firestore
-- [ ] Sin errores en consola
-- [ ] Performance optimizada
-- [ ] SEO implementado
-- [ ] Accesibilidad verificada
-
-## 🤝 Contribución
-
-1. Fork el proyecto
-2. Crear rama feature (`git checkout -b feature/AmazingFeature`)
-3. Commit cambios (`git commit -m 'Add AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abrir Pull Request
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
-
-## 📞 Soporte
-
-Para soporte técnico o preguntas:
-- Email: soporte@edunova.com
-- Documentación: docs.edunova.com
-- Issues: GitHub Issues
+- **Email**: truiz050904@gmail.com
+- **Horario**: Lun-Vie 9-18h (AR)
 
 ---
 
-**EduNova** - Donde juntamos la Educación con lo nuevo.
+*Última actualización: Diciembre 2024*

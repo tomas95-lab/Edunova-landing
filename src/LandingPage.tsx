@@ -40,17 +40,17 @@ export function LandingPage() {
     setToastOpen(true);
   };
 
-  
-
   return (
     <div className="min-h-screen">
-      {/* Navbar */}
-      <Navbar onDemoClick={handleDemoClick} />
+      {/* Header */}
+      <header>
+        <Navbar onDemoClick={handleDemoClick} />
+      </header>
 
       {/* Main Content */}
-      <main>
+      <main role="main">
         <Hero onDemoClick={handleDemoClick} onCallClick={handleCallClick} />
-        <SocialProof />
+        <SocialProof onDemoClick={handleDemoClick} />
         <Features />
         <HowItWorks onDemoClick={handleDemoClick} />
         <IAHighlights />
@@ -58,7 +58,6 @@ export function LandingPage() {
         <Pricing onDemoClick={handleDemoClick} />
         <FAQ />
         <CTA onDemoClick={handleDemoClick} onLeadSuccess={handleLeadSuccess} />
-      
       </main>
 
       {/* Footer */}

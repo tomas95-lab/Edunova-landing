@@ -93,7 +93,7 @@ export function Pricing({ onDemoClick }: PricingProps) {
                     <span className="text-gradient">¡GRATIS!</span>
                   </div>
                   <div className="text-sm mt-2" style={{ color: 'var(--color-text-secondary)' }}>
-                    Durante los primeros 3 meses
+                    Durante el primer mes
                   </div>
                 </div>
               </div>
@@ -141,7 +141,7 @@ export function Pricing({ onDemoClick }: PricingProps) {
           <div className="inline-flex items-center px-8 py-4 rounded-2xl bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200">
             <Sparkles className="w-5 h-5 text-yellow-600 mr-3" />
             <p className="text-lg font-semibold text-yellow-800">
-              🎉 Oferta de lanzamiento: Primeros 20 usuarios obtienen 3 meses gratis
+              🎉 Oferta de lanzamiento: Primeros 20 usuarios obtienen 1 mes gratis
             </p>
           </div>
           <p className="mt-4 text-lg" style={{ color: 'var(--color-text-secondary)' }}>

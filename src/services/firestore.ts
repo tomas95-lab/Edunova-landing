@@ -6,8 +6,11 @@ export interface LeadData {
   email: string;
   colegio: string;
   rol: string;
-  tamaño: string;
-  mensaje?: string;
+  telefono?: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
   source: string;
   createdAt: string;
 }

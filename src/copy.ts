@@ -1,21 +1,23 @@
 export const landingCopy = {
   // Hero Section
   hero: {
-    title: "La forma moderna de gestionar tu colegio",
-    subtitle: "Menos planillas, más aprendizaje. Con IA aplicada: registra asistencias, calificaciones y genera observaciones inteligentes en minutos.",
+    title: "Menos planillas. Más tiempo de clase.",
+    subtitle: "Automatizá asistencia, reportes y comunicación en 15 minutos.",
     bullets: [
       "**Ahorra tiempo**: hasta 70% menos trabajo administrativo*",
       "**Todo en uno**: académica, comunicación y reportes",
       "**Con \"IA\" útil**: observaciones y alertas automáticas"
     ],
-    ctaPrimary: "Solicitar demo",
+    ctaPrimary: "Agendar demo de 15 min",
     ctaSecondary: "Agendar llamada",
     note: "*Resultados estimados en base a pruebas internas."
   },
 
   // Social Proof
   socialProof: {
-    title: "Diseñado para equipos que priorizan simplicidad y resultados."
+    title: "Diseñado para equipos que priorizan simplicidad y resultados.",
+    testimonial: "Colegio de GBA Oeste redujo 4 horas semanales en tareas administrativas",
+    pilotProgram: "Buscamos 3 pilotos en CABA y GBA - Cupo limitado hasta 15 de diciembre"
   },
 
   // Features
@@ -49,20 +51,50 @@ export const landingCopy = {
   // How It Works
   howItWorks: {
     title: "¿Cómo funciona?",
+    subtitle: "Implementación guiada. Sin planillas. Funciona desde el día 1.",
     steps: [
       {
-        title: "Conecta tus cursos y alumnos",
-        description: "Importa CSV o sincroniza tu base"
+        title: "Diagnóstico 15 min",
+        description: "Evaluamos tu flujo actual"
       },
       {
-        title: "Registra asistencias y notas",
-        description: "O usa carga rápida"
+        title: "Configuración 48h",
+        description: "Importamos datos y configuramos"
       },
       {
-        title: "Genera reportes y boletines",
-        description: "Comparte en PDF o por panel"
+        title: "Acompañamiento 2 semanas",
+        description: "Soporte completo hasta que funcione"
       }
     ]
+  },
+
+  // En 2 semanas lográs
+  quickWins: {
+    title: "En 2 semanas lográs:",
+    wins: [
+      "Asistencia sin planillas",
+      "Reportes listos para directivos",
+      "Mensajería a familias centralizada"
+    ]
+  },
+
+  // Trust & Confidence
+  trust: {
+    title: "Tu información segura",
+    features: [
+      "Cumplimiento Ley 25.326 de Protección de Datos",
+      "Backups automáticos diarios",
+      "Alojamiento en servidores de Argentina",
+      "Soporte por email + horario AR"
+    ]
+  },
+
+  // Pilot Program
+  pilot: {
+    title: "Prueba piloto sin costo",
+    subtitle: "1 curso, primer mes gratis",
+    description: "Reduce fricción y te da caso de éxito local",
+    cta: "Aplicar para piloto"
   },
 
   // AI Highlights
@@ -185,8 +217,7 @@ export const landingCopy = {
       email: "Email",
       colegio: "Nombre del colegio",
       rol: "Tu rol",
-      tamaño: "Tamaño del colegio",
-      mensaje: "Mensaje (opcional)"
+      telefono: "Teléfono (opcional)"
     },
     roles: [
       { value: "directivo", label: "Directivo" },
@@ -194,12 +225,7 @@ export const landingCopy = {
       { value: "docente", label: "Docente" },
       { value: "otro", label: "Otro" }
     ],
-    tamaños: [
-      { value: "<300", label: "Menos de 300 alumnos" },
-      { value: "300-900", label: "300-900 alumnos" },
-      { value: "900+", label: "Más de 900 alumnos" }
-    ],
-    submit: "Solicitar demo",
+    submit: "Agendar demo de 15 min",
     success: "¡Gracias! Te contactaremos pronto.",
     error: "Hubo un error. Intenta nuevamente."
   }

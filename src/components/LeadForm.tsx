@@ -3,6 +3,7 @@ import { Check, Loader2 } from 'lucide-react';
 import { landingCopy } from '../copy';
 import { firestoreService } from '../services/firestore';
 import { sendLeadToGoogleSheet } from '../services/sheets';
+import { track } from '../lib/utils';
 
 interface LeadFormProps {
   onSuccess?: () => void;
@@ -16,19 +17,31 @@ export function LeadForm({ onSuccess, onClose, variant = 'modal' }: LeadFormProp
     email: '',
     colegio: '',
     rol: '',
-    tamaño: '',
-    mensaje: ''
+    telefono: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  // Obtener UTMs de la URL
+  const getUTMParams = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+      utm_source: urlParams.get('utm_source') || '',
+      utm_medium: urlParams.get('utm_medium') || '',
+      utm_campaign: urlParams.get('utm_campaign') || '',
+      utm_content: urlParams.get('utm_content') || ''
+    };
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
+      const utmParams = getUTMParams();
       const leadData = {
         ...formData,
+        ...utmParams,
         source: 'landing',
         createdAt: new Date().toISOString()
       };
@@ -42,8 +55,8 @@ export function LeadForm({ onSuccess, onClose, variant = 'modal' }: LeadFormProp
         email: formData.email,
         colegio: formData.colegio,
         rol: formData.rol,
-        tamaño: formData.tamaño,
-        mensaje: formData.mensaje
+        telefono: formData.telefono,
+        ...utmParams
       });
 
       if (firestoreOk || sheetsOk) {
@@ -71,9 +84,9 @@ export function LeadForm({ onSuccess, onClose, variant = 'modal' }: LeadFormProp
 
   if (isSuccess) {
     return (
-      <div className="text-center py-8">
+      <div className="text-center py-8" role="status" aria-live="polite">
         <div className="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-          <Check className="w-6 h-6 text-green-600" />
+          <Check className="w-6 h-6 text-green-600" aria-hidden="true" />
         </div>
         <h3 className="text-lg font-semibold text-gray-900 mb-2">
           ¡Gracias por tu interés!
@@ -90,7 +103,7 @@ export function LeadForm({ onSuccess, onClose, variant = 'modal' }: LeadFormProp
       {variant !== 'modal' && (
         <div className="text-center mb-8">
           <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center shadow-lg" style={{ background: 'var(--gradient-primary)' }}>
-            <Check className="w-8 h-8 text-white" />
+            <Check className="w-8 h-8 text-white" aria-hidden="true" />
           </div>
           <h2 className="text-3xl font-black mb-4" style={{ color: 'var(--color-text-strong)' }}>
             {landingCopy.leadForm.title}
@@ -109,15 +122,16 @@ export function LeadForm({ onSuccess, onClose, variant = 'modal' }: LeadFormProp
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6" aria-label="Formulario de solicitud de demo">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="nombre" className="block text-sm font-semibold mb-2" style={{ color: 'var(--color-text-strong)' }}>
-              {landingCopy.leadForm.fields.nombre} *
+              Nombre completo <span className="text-red-500" aria-label="requerido">*</span>
             </label>
             <input
               type="text"
               id="nombre"
+              name="nombre"
               required
               value={formData.nombre}
               onChange={(e) => handleChange('nombre', e.target.value)}
@@ -126,16 +140,19 @@ export function LeadForm({ onSuccess, onClose, variant = 'modal' }: LeadFormProp
                 color: 'var(--color-text-strong)'
               }}
               placeholder="Tu nombre completo"
+              aria-describedby="nombre-help"
             />
+            <p id="nombre-help" className="sr-only">Ingresa tu nombre completo</p>
           </div>
 
           <div>
             <label htmlFor="email" className="block text-sm font-semibold mb-2" style={{ color: 'var(--color-text-strong)' }}>
-              {landingCopy.leadForm.fields.email} *
+              Email <span className="text-red-500" aria-label="requerido">*</span>
             </label>
             <input
               type="email"
               id="email"
+              name="email"
               required
               value={formData.email}
               onChange={(e) => handleChange('email', e.target.value)}
@@ -144,17 +161,20 @@ export function LeadForm({ onSuccess, onClose, variant = 'modal' }: LeadFormProp
                 color: 'var(--color-text-strong)'
               }}
               placeholder="tu@email.com"
+              aria-describedby="email-help"
             />
+            <p id="email-help" className="sr-only">Ingresa tu dirección de email</p>
           </div>
         </div>
 
         <div>
           <label htmlFor="colegio" className="block text-sm font-semibold mb-2" style={{ color: 'var(--color-text-strong)' }}>
-            {landingCopy.leadForm.fields.colegio} *
+            Nombre del colegio <span className="text-red-500" aria-label="requerido">*</span>
           </label>
           <input
             type="text"
             id="colegio"
+            name="colegio"
             required
             value={formData.colegio}
             onChange={(e) => handleChange('colegio', e.target.value)}
@@ -163,16 +183,19 @@ export function LeadForm({ onSuccess, onClose, variant = 'modal' }: LeadFormProp
               color: 'var(--color-text-strong)'
             }}
             placeholder="Nombre de tu institución"
+            aria-describedby="colegio-help"
           />
+          <p id="colegio-help" className="sr-only">Ingresa el nombre de tu institución educativa</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="rol" className="block text-sm font-semibold mb-2" style={{ color: 'var(--color-text-strong)' }}>
-              {landingCopy.leadForm.fields.rol} *
+              Tu rol <span className="text-red-500" aria-label="requerido">*</span>
             </label>
             <select
               id="rol"
+              name="rol"
               required
               value={formData.rol}
               onChange={(e) => handleChange('rol', e.target.value)}
@@ -180,6 +203,7 @@ export function LeadForm({ onSuccess, onClose, variant = 'modal' }: LeadFormProp
               style={{ 
                 color: 'var(--color-text-strong)'
               }}
+              aria-describedby="rol-help"
             >
               <option value="">Selecciona tu rol</option>
               {landingCopy.leadForm.roles.map(role => (
@@ -188,67 +212,58 @@ export function LeadForm({ onSuccess, onClose, variant = 'modal' }: LeadFormProp
                 </option>
               ))}
             </select>
+            <p id="rol-help" className="sr-only">Selecciona tu rol en la institución</p>
           </div>
 
           <div>
-            <label htmlFor="tamaño" className="block text-sm font-semibold mb-2" style={{ color: 'var(--color-text-strong)' }}>
-              {landingCopy.leadForm.fields.tamaño} *
+            <label htmlFor="telefono" className="block text-sm font-semibold mb-2" style={{ color: 'var(--color-text-strong)' }}>
+              Teléfono <span className="text-gray-500 text-xs">(opcional)</span>
             </label>
-            <select
-              id="tamaño"
-              required
-              value={formData.tamaño}
-              onChange={(e) => handleChange('tamaño', e.target.value)}
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              value={formData.telefono}
+              onChange={(e) => handleChange('telefono', e.target.value)}
               className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
               style={{ 
                 color: 'var(--color-text-strong)'
               }}
-            >
-              <option value="">Selecciona el tamaño</option>
-              {landingCopy.leadForm.tamaños.map(tamaño => (
-                <option key={tamaño.value} value={tamaño.value}>
-                  {tamaño.label}
-                </option>
-              ))}
-            </select>
+              placeholder="+54 9 11 1234-5678"
+              aria-describedby="telefono-help"
+            />
+            <p id="telefono-help" className="sr-only">Ingresa tu número de teléfono (opcional)</p>
           </div>
         </div>
 
-        <div>
-          <label htmlFor="mensaje" className="block text-sm font-semibold mb-2" style={{ color: 'var(--color-text-strong)' }}>
-            {landingCopy.leadForm.fields.mensaje}
-          </label>
-          <textarea
-            id="mensaje"
-            rows={4}
-            value={formData.mensaje}
-            onChange={(e) => handleChange('mensaje', e.target.value)}
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 resize-none"
-            style={{ 
-              color: 'var(--color-text-strong)'
-            }}
-            placeholder="Cuéntanos más sobre tus necesidades..."
-          />
-        </div>
+        {/* Campos UTM ocultos */}
+        <input type="hidden" name="utm_source" value={getUTMParams().utm_source} />
+        <input type="hidden" name="utm_medium" value={getUTMParams().utm_medium} />
+        <input type="hidden" name="utm_campaign" value={getUTMParams().utm_campaign} />
+        <input type="hidden" name="utm_content" value={getUTMParams().utm_content} />
 
         <button
           type="submit"
           disabled={isSubmitting}
           className="w-full py-4 px-6 rounded-xl font-bold text-lg text-white hover-lift focus-ring shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
           style={{ background: 'var(--gradient-primary)' }}
+          aria-describedby="submit-help"
         >
           {isSubmitting ? (
             <div className="flex items-center justify-center">
-              <Loader2 className="w-5 h-5 mr-3 animate-spin" />
+              <Loader2 className="w-5 h-5 mr-3 animate-spin" aria-hidden="true" />
               Enviando...
             </div>
           ) : (
             <div className="flex items-center justify-center">
-              <Check className="w-5 h-5 mr-3" />
-              {landingCopy.leadForm.submit}
+              <Check className="w-5 h-5 mr-3" aria-hidden="true" />
+              Agendar demo de 15 min
             </div>
           )}
         </button>
+        <p id="submit-help" className="sr-only">
+          Al hacer clic en este botón, solicitarás una demo gratuita de 15 minutos del sistema de gestión escolar
+        </p>
       </form>
     </div>
   );

@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://edunova-landing-seven.vercel.app/sitemap.xml
+
+# Crawl-delay para ser respetuoso con el servidor
+Crawl-delay: 1
+
+# No indexar archivos de desarrollo
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*.map$
+
+# Permitir recursos importantes
+Allow: /assets/
+Allow: /images/
+Allow: /favicon.ico
