@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, Star, Zap, Shield, Clock, Check } from 'lucide-react';
+import { ArrowRight, Star, Clock, Check } from 'lucide-react';
 import { landingCopy } from '../copy';
 import { trackCTA } from '../lib/utils';
 

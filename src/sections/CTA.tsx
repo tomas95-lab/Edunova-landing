@@ -1,5 +1,4 @@
 import { ArrowRight, Clock } from 'lucide-react';
-import { landingCopy } from '../copy';
 import { trackCTA } from '../lib/utils';
 
 interface CTAProps {

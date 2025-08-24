@@ -3,7 +3,6 @@ import { Check, Loader2 } from 'lucide-react';
 import { landingCopy } from '../copy';
 import { firestoreService } from '../services/firestore';
 import { sendLeadToGoogleSheet } from '../services/sheets';
-import { track } from '../lib/utils';
 
 interface LeadFormProps {
   onSuccess?: () => void;
